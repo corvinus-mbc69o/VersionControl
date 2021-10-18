@@ -10,5 +10,6 @@ namespace ötödikgyakmbc69o.Entities
     {
         public string Index { get; set; }
         public decimal Volume { get; set; }
+        
     }
 }
