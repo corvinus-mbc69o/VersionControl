@@ -12,6 +12,7 @@ using UserMaintenance.Entities;
 
 namespace UserMaintenance
 {
+    
     public partial class Form1 : Form
     {
         BindingList<User> users = new BindingList<User>();
@@ -24,14 +25,7 @@ namespace UserMaintenance
 
             listBoxUsers.DataSource = users;
             listBoxUsers.ValueMember = "ID";
-            listBoxUsers.DisplayMember = "FullName";
-
-            var u = new User()
-            {
-                FullName = textBoxLastName.Text + " " + textBoxFirstName.Text,
-                
-            };
-            users.Add(u);
+            listBoxUsers.DisplayMember = "FullName";          
 
         }
 
@@ -46,14 +40,9 @@ namespace UserMaintenance
                 foreach (var u in users) 
                 {
                     sw.Write(u.ID);
-                    sw.Write(u.FullName);
-                    
+                    sw.Write(u.FullName);                  
                 }
-
-            }
-           
-            
-
+            }           
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -61,9 +50,14 @@ namespace UserMaintenance
             var u = new User()
             {
                 FullName = textBoxFirstName.Text
-
             };
             users.Add(u);
+        }
+
+        private void buttonTörlés_Click(object sender, EventArgs e)
+        {
+            //listBoxUsers.Items.Remove(listBoxUsers.SelectedItem);
+            //listBoxUsers.Show();
         }
     }
 }

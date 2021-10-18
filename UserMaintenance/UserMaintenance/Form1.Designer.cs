@@ -36,6 +36,7 @@ namespace UserMaintenance
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonFile = new System.Windows.Forms.Button();
+            this.buttonTörlés = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxUsers
@@ -52,18 +53,18 @@ namespace UserMaintenance
             this.labelLastName.AutoSize = true;
             this.labelLastName.Location = new System.Drawing.Point(340, 51);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(62, 20);
+            this.labelLastName.Size = new System.Drawing.Size(51, 20);
             this.labelLastName.TabIndex = 1;
-            this.labelLastName.Text = "Veznév";
+            this.labelLastName.Text = "label1";
             // 
             // labelFirstName
             // 
             this.labelFirstName.AutoSize = true;
             this.labelFirstName.Location = new System.Drawing.Point(340, 100);
             this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(60, 20);
+            this.labelFirstName.Size = new System.Drawing.Size(51, 20);
             this.labelFirstName.TabIndex = 2;
-            this.labelFirstName.Text = "Utónév";
+            this.labelFirstName.Text = "label2";
             // 
             // textBoxLastName
             // 
@@ -99,11 +100,22 @@ namespace UserMaintenance
             this.buttonFile.UseVisualStyleBackColor = true;
             this.buttonFile.Click += new System.EventHandler(this.buttonFile_Click);
             // 
+            // buttonTörlés
+            // 
+            this.buttonTörlés.Location = new System.Drawing.Point(344, 283);
+            this.buttonTörlés.Name = "buttonTörlés";
+            this.buttonTörlés.Size = new System.Drawing.Size(312, 44);
+            this.buttonTörlés.TabIndex = 7;
+            this.buttonTörlés.Text = "Törlés";
+            this.buttonTörlés.UseVisualStyleBackColor = true;
+            this.buttonTörlés.Click += new System.EventHandler(this.buttonTörlés_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonTörlés);
             this.Controls.Add(this.buttonFile);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBoxFirstName);
@@ -127,6 +139,7 @@ namespace UserMaintenance
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonFile;
+        private System.Windows.Forms.Button buttonTörlés;
     }
 }
 
