@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace ötödikgyakmbc69o
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
+        List<decimal> nyereségekRendezve = new List<decimal>();
 
         public Form1()
         {
@@ -37,7 +39,7 @@ namespace ötödikgyakmbc69o
                 Console.WriteLine(i + " " + ny);
             }
 
-            var nyereségekRendezve = (from x in Nyereségek
+            nyereségekRendezve = (from x in Nyereségek
                                       orderby x
                                       select x)
                                         .ToList();
@@ -73,7 +75,23 @@ namespace ötödikgyakmbc69o
             return value;
         }
 
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
+            {
+                sw.WriteLine("Időszak Nyereség");
+                int counter = 1;
+                foreach (var item in nyereségekRendezve)
+                {
+                    sw.WriteLine(counter + ". " + item);
+                    counter++;
+                }
+
+            }
 
 
+        }
     }
 }
