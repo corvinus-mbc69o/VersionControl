@@ -1,4 +1,5 @@
-﻿using mbc69o_6gyak.MnbServiceReference;
+﻿using mbc69o_6gyak.Entities;
+using mbc69o_6gyak.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,13 @@ namespace mbc69o_6gyak
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
         public Form1()
         {
             InitializeComponent();
             AddParameters();
+            dataGridView1.DataSource = "Rates";
+
         }
 
         private void AddParameters()
