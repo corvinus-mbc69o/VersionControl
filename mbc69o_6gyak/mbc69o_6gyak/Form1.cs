@@ -21,10 +21,8 @@ namespace mbc69o_6gyak
         public Form1()
         {
             InitializeComponent();
-            AddParameters();
-            dataGridView1.DataSource = Rates;
-            XML();
-            Diagram();
+            RefreshData();
+            
 
         }
 
@@ -33,10 +31,10 @@ namespace mbc69o_6gyak
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
-            {
-                currencyNames = "EUR",
-                startDate = "2020-01-01",
-                endDate = "2020-06-30"
+            {                
+                currencyNames = (comboBox1.SelectedItem).ToString(),
+                startDate = (dateTimePicker1.Value).ToString(),
+                endDate = (dateTimePicker2.Value).ToString()                                
             };
             var response = mnbService.GetExchangeRates(request);
             result = response.GetExchangeRatesResult;
@@ -78,7 +76,31 @@ namespace mbc69o_6gyak
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
+        }
 
+        private void RefreshData()
+        {
+            Rates.Clear();
+            AddParameters();
+            dataGridView1.DataSource = Rates;
+            XML();
+            Diagram();
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
