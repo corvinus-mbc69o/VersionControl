@@ -18,9 +18,14 @@ namespace mbc69o_6gyak
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
         string result;
+        BindingList<string> Currencies;
+        string currencyresult;
+        
         public Form1()
         {
             InitializeComponent();
+            GetCurrencies();
+            comboBox1.DataSource = Currencies;
             RefreshData();
             
 
@@ -101,6 +106,35 @@ namespace mbc69o_6gyak
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void GetCurrencies()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient();
+
+            var request = new GetCurrenciesRequestBody()
+            {
+                currencyNames = (comboBox1.SelectedItem).ToString()         
+            };
+            var response = mnbService.GetCurrencies(request);
+            currencyresult = response.GetCurrenciesResult;
+        }
+
+        private void xXML()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(currencyresult);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var vmi = new RateData();
+                Currencies.Add(vmi.ToString());
+                var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
+                vmi.Currency = childElement.GetAttribute("curr");
+            }
+
         }
     }
 }
