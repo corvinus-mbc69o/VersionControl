@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace _7gyak_mbc69o.Entities
 {
-    class BallFactory
+    public class BallFactory
     {
         public Ball CreateNew()
         {
             return new Ball();
-        }
-        
+        }        
     }
 }

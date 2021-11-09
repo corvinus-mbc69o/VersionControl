@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace _7gyak_mbc69o.Entities
 {
-    class Ball: Label
+    public class Ball: Label
     {
         public Ball()
         {
