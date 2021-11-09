@@ -69,7 +69,10 @@ namespace _7gyak_mbc69o
 
         private void btnBall_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory()
+            {
+                BallColor = btnBallColor.BackColor
+            };
         }
 
         public void DisplayNext()
@@ -80,6 +83,17 @@ namespace _7gyak_mbc69o
             _nextToy.Top = labelNext.Top + labelNext.Height + 20;
             _nextToy.Left = labelNext.Left;
             Controls.Add(_nextToy);
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
         }
     }
 }

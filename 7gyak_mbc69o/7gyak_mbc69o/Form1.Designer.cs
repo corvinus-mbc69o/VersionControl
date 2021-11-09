@@ -36,13 +36,14 @@ namespace _7gyak_mbc69o
             this.btnCar = new System.Windows.Forms.Button();
             this.btnBall = new System.Windows.Forms.Button();
             this.labelNext = new System.Windows.Forms.Label();
+            this.btnBallColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(34, 138);
+            this.mainPanel.Location = new System.Drawing.Point(34, 185);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(725, 300);
+            this.mainPanel.Size = new System.Drawing.Size(725, 253);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
@@ -86,11 +87,22 @@ namespace _7gyak_mbc69o
             this.labelNext.TabIndex = 3;
             this.labelNext.Text = "Coming Next: ";
             // 
+            // btnBallColor
+            // 
+            this.btnBallColor.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnBallColor.Location = new System.Drawing.Point(154, 94);
+            this.btnBallColor.Name = "btnBallColor";
+            this.btnBallColor.Size = new System.Drawing.Size(87, 36);
+            this.btnBallColor.TabIndex = 4;
+            this.btnBallColor.UseVisualStyleBackColor = false;
+            this.btnBallColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBallColor);
             this.Controls.Add(this.labelNext);
             this.Controls.Add(this.btnBall);
             this.Controls.Add(this.btnCar);
@@ -110,6 +122,7 @@ namespace _7gyak_mbc69o
         private System.Windows.Forms.Button btnCar;
         private System.Windows.Forms.Button btnBall;
         private System.Windows.Forms.Label labelNext;
+        private System.Windows.Forms.Button btnBallColor;
     }
 }
 
