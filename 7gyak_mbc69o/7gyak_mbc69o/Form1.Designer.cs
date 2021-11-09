@@ -37,6 +37,9 @@ namespace _7gyak_mbc69o
             this.btnBall = new System.Windows.Forms.Button();
             this.labelNext = new System.Windows.Forms.Label();
             this.btnBallColor = new System.Windows.Forms.Button();
+            this.btnPresent = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
+            this.btnRibbonColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -81,7 +84,7 @@ namespace _7gyak_mbc69o
             // labelNext
             // 
             this.labelNext.AutoSize = true;
-            this.labelNext.Location = new System.Drawing.Point(354, 23);
+            this.labelNext.Location = new System.Drawing.Point(388, 23);
             this.labelNext.Name = "labelNext";
             this.labelNext.Size = new System.Drawing.Size(107, 20);
             this.labelNext.TabIndex = 3;
@@ -97,11 +100,46 @@ namespace _7gyak_mbc69o
             this.btnBallColor.UseVisualStyleBackColor = false;
             this.btnBallColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
+            // btnPresent
+            // 
+            this.btnPresent.Location = new System.Drawing.Point(261, 23);
+            this.btnPresent.Name = "btnPresent";
+            this.btnPresent.Size = new System.Drawing.Size(104, 65);
+            this.btnPresent.TabIndex = 5;
+            this.btnPresent.Text = "PRESENT";
+            this.btnPresent.UseVisualStyleBackColor = true;
+            this.btnPresent.Click += new System.EventHandler(this.btnPresent_Click);
+            // 
+            // btnBoxColor
+            // 
+            this.btnBoxColor.BackColor = System.Drawing.Color.Red;
+            this.btnBoxColor.Location = new System.Drawing.Point(261, 136);
+            this.btnBoxColor.Name = "btnBoxColor";
+            this.btnBoxColor.Size = new System.Drawing.Size(104, 36);
+            this.btnBoxColor.TabIndex = 6;
+            this.btnBoxColor.Text = "Ribbon";
+            this.btnBoxColor.UseVisualStyleBackColor = false;
+            this.btnBoxColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // btnRibbonColor
+            // 
+            this.btnRibbonColor.BackColor = System.Drawing.Color.Yellow;
+            this.btnRibbonColor.Location = new System.Drawing.Point(261, 94);
+            this.btnRibbonColor.Name = "btnRibbonColor";
+            this.btnRibbonColor.Size = new System.Drawing.Size(104, 36);
+            this.btnRibbonColor.TabIndex = 7;
+            this.btnRibbonColor.Text = "Box";
+            this.btnRibbonColor.UseVisualStyleBackColor = false;
+            this.btnRibbonColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRibbonColor);
+            this.Controls.Add(this.btnBoxColor);
+            this.Controls.Add(this.btnPresent);
             this.Controls.Add(this.btnBallColor);
             this.Controls.Add(this.labelNext);
             this.Controls.Add(this.btnBall);
@@ -123,6 +161,9 @@ namespace _7gyak_mbc69o
         private System.Windows.Forms.Button btnBall;
         private System.Windows.Forms.Label labelNext;
         private System.Windows.Forms.Button btnBallColor;
+        private System.Windows.Forms.Button btnPresent;
+        private System.Windows.Forms.Button btnBoxColor;
+        private System.Windows.Forms.Button btnRibbonColor;
     }
 }
 

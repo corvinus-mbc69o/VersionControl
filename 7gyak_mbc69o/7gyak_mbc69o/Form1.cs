@@ -95,5 +95,15 @@ namespace _7gyak_mbc69o
                 return;
             button.BackColor = colorPicker.Color;
         }
+
+        private void btnPresent_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory()
+            {
+                Boxcolor = btnBoxColor.BackColor,
+                Ribboncolor= btnRibbonColor.BackColor
+            };
+
+        }
     }
 }
