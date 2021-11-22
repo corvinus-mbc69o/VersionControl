@@ -16,46 +16,58 @@ namespace mbc69o_6gyak
 {
     public partial class Form1 : Form
     {
-        BindingList<RateData> Rates = new BindingList<RateData>();
-        string result;
-        BindingList<string> Currencies;
-        string currencyresult;
+        BindingList<RateData> Rates = new BindingList<RateData>();        
+        BindingList<string> Currencies= new BindingList<string>();        
         
         public Form1()
         {
             InitializeComponent();
-            GetCurrencies();
+            
             comboBox1.DataSource = Currencies;
+            var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();            
+            var response = mnbService.GetCurrencies(request);
+            string result = response.GetCurrenciesResult;
+            var vxml = new XmlDocument();
+            vxml.LoadXml(result);
+            foreach (XmlElement item in vxml.DocumentElement.FirstChild.ChildNodes)
+            {
+                Currencies.Add(item.InnerText);
+            }
             RefreshData();
             
 
         }
 
-        private void AddParameters()
+         public string AddParameters()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
             {                
-                currencyNames = (comboBox1.SelectedItem).ToString(),
-                startDate = (dateTimePicker1.Value).ToString(),
-                endDate = (dateTimePicker2.Value).ToString()                                
+                currencyNames = comboBox1.SelectedItem.ToString(),
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()                                
             };
             var response = mnbService.GetExchangeRates(request);
-            result = response.GetExchangeRatesResult;
+            string result = response.GetExchangeRatesResult;
+            return result;
         }
 
-        private void XML()
+        private void XML(string input)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(result);
+            xml.LoadXml(input);           
 
             foreach (XmlElement element in xml.DocumentElement)
             {
                 var rate = new RateData();
                 Rates.Add(rate);
+
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null) continue;                
                 rate.Currency = childElement.GetAttribute("curr");
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
@@ -85,10 +97,11 @@ namespace mbc69o_6gyak
 
         private void RefreshData()
         {
-            Rates.Clear();
-            AddParameters();
+            if (comboBox1.SelectedItem == null) return;           
+            Rates.Clear();            
+            string xmlstring= AddParameters();
             dataGridView1.DataSource = Rates;
-            XML();
+            XML(xmlstring);
             Diagram();
 
         }
@@ -106,35 +119,8 @@ namespace mbc69o_6gyak
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
-        }
+        }        
 
-        private void GetCurrencies()
-        {
-            var mnbService = new MNBArfolyamServiceSoapClient();
-
-            var request = new GetCurrenciesRequestBody()
-            {
-                currencyNames = (comboBox1.SelectedItem).ToString()         
-            };
-            var response = mnbService.GetCurrencies(request);
-            currencyresult = response.GetCurrenciesResult;
-        }
-
-        private void xXML()
-        {
-            var xml = new XmlDocument();
-            xml.LoadXml(currencyresult);
-
-            foreach (XmlElement element in xml.DocumentElement)
-            {
-                var vmi = new RateData();
-                Currencies.Add(vmi.ToString());
-                var childElement = (XmlElement)element.ChildNodes[0];
-                if (childElement == null)
-                    continue;
-                vmi.Currency = childElement.GetAttribute("curr");
-            }
-
-        }
+        
     }
 }

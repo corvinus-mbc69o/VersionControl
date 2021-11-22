@@ -26,10 +26,6 @@ namespace _7gyak_mbc69o
             }
         }
 
-
-       
-
-
         public Form1()
         {
             InitializeComponent();
@@ -91,8 +87,7 @@ namespace _7gyak_mbc69o
             var colorPicker = new ColorDialog();
 
             colorPicker.Color = button.BackColor;
-            if (colorPicker.ShowDialog() != DialogResult.OK)
-                return;
+            if (colorPicker.ShowDialog() != DialogResult.OK) return;
             button.BackColor = colorPicker.Color;
         }
 

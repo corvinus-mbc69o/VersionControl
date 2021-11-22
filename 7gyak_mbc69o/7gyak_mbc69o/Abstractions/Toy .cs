@@ -15,7 +15,7 @@ namespace _7gyak_mbc69o.Abstractions
             AutoSize = false;
             Width = 50;
             Height = Width;
-            Paint += Toy_Paint;
+            Paint += Toy_Paint;            
         }
 
         private void Toy_Paint(object sender, PaintEventArgs e)

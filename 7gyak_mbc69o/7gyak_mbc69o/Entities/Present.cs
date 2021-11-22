@@ -20,8 +20,8 @@ namespace _7gyak_mbc69o.Entities
         protected override void DrawImage(Graphics g)
         {
             g.FillRectangle(Boxcolor, 0, 0, Width, Height);
-            g.FillRectangle(Ribboncolor, Width/2, 0, Width/5, Height);
-            g.FillRectangle(Ribboncolor, 0, Height/2, Width, Height/5);
+            g.FillRectangle(Ribboncolor, 0, (Height/5)*2, Width, Height/5);
+            g.FillRectangle(Ribboncolor, (Width/5)*2, 0, Width/5, Height);
         }
     }
 }

@@ -15,8 +15,9 @@ namespace _7gyak_mbc69o.Entities
 
         public Ball(Color color)
         {
-            BallColor = new SolidBrush(color);
+            BallColor = new SolidBrush(color);            
         }
+        
 
         protected override void DrawImage(Graphics g)
         {
