@@ -34,7 +34,8 @@ namespace UnitTestExample
         {
             InitializeComponent();
             PasswordCheckPassed = true;
-            dgwAccounts.DataSource = _controller.AccountManager.Accounts;         
+            dgwAccounts.DataSource = _controller.AccountManager.Accounts;
+            
         }
 
         private void OnPasswordTextChanged(object sender, EventArgs e)

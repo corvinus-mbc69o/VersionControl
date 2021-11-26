@@ -11,6 +11,7 @@ using UnitTestExample.Services;
 
 namespace UnitTestExample.Controllers
 {
+    
     public class AccountController
     {        
         public IAccountManager AccountManager { get; set; }
@@ -22,7 +23,7 @@ namespace UnitTestExample.Controllers
 
         public Account Register(string email, string password)
         {
-            if(!ValidateEmail(email))
+            if(!ValidateEmail(password))
                 throw new ValidationException(
                     "A megadott e-mail cím nem megfelelő!");
             if(!ValidateEmail(email))
@@ -32,6 +33,7 @@ namespace UnitTestExample.Controllers
 
             var account = new Account()
             {
+                ID = Guid.NewGuid(),
                 Email = email,
                 Password = password
             };
@@ -50,7 +52,11 @@ namespace UnitTestExample.Controllers
 
         public bool ValidatePassword(string password)
         {
-            return true;
+            var kisbetu = new Regex(@"[a-z]+");
+            var nagybetu = new Regex(@"[A-Z]+");
+            var kellszam= new Regex(@"[0-9]+");
+            var nyolckarakter = new Regex(@".{8,}");
+            return kisbetu.IsMatch(password)&&nagybetu.IsMatch(password)&&kellszam.IsMatch(password)&&nyolckarakter.IsMatch(password);
         }
     }
 }
