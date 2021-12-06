@@ -155,7 +155,7 @@ namespace gyak9__mbc69o
                                     select x).Count();
                 
                 currentFemales = nbrOfFemales;
-                currentYear = year;
+                currentYear = year;                
                 DisplayResults();
             }
 
