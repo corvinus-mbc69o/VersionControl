@@ -61,6 +61,7 @@ namespace gyak10_mbc69o
             {
                 winnerBrain = winners.FirstOrDefault().Brain.Clone();
                 gc.GameOver -= Gc_GameOver;
+                btnStart.Visible = true;
                 return;
             }
 
@@ -81,10 +82,7 @@ namespace gyak10_mbc69o
             }
             gc.Start();
 
-            if (winners.Count() ==1)
-            {
-                btnStart.Visible = true;
-            }
+            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
